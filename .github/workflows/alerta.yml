@@ -1,0 +1,20 @@
+name: Notificación DevOps ITLA
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Ejecutar Hola Mundo
+        run: python3 main.py
+
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -d "🚀 Nuevo push en el repositorio (rama main)" ntfy.sh/devops-itla
